@@ -6,27 +6,43 @@
 
 import cv2
 import matplotlib.pyplot as plt
-gray_image = cv2.imread("gray image of flower.jpg")
-color_image = cv2.imread()
-cv2.imshow("Gray Image",gray_image)
+gray_image=cv2.imread('img-1.jpg')
+grey=cv2.cvtColor(gray_image,cv2.COLOR_BGR2GRAY)
+plt.imshow(grey)
+plt.axis('on')
+plt.show()
 
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+color_image=cv2.imread('img-2.jpg')
+plt.imshow(color_image)
+plt.axis('on')
+plt.show()
 
 
 # In[2]:Display the histogram of gray scale image and any one channel histogram from color image
 
 
-import matplotlib.pyplot as plt 
-grayscale_image=cv2.imread("gray image of flower.jpg")
-colourscale_image=cv2.imread("color image of flower.jpg")
-hist=cv2.calcHist(grayscale_image,[0],None,[255],[0,255])
-hist1=cv2.calcHist()
+import numpy as np
+Gray_image = cv2.imread("img-1.jpg")
+Color_image = cv2.imread("img-2.jpg")
+grey=cv2.cvtColor(gray_image,cv2.COLOR_BGR2GRAY)
+gray_hist = cv2.calcHist([grey],[0],None,[1100],[0,1100])
 plt.figure()
+plt.imshow(grey)
+plt.show()
 plt.title("Histogram")
-plt.xlabel("")
-plt.ylabel("pixel count")
-plt.stem()
+plt.xlabel("Grayscale Value")
+plt.ylabel("Pixel Count")
+plt.stem(gray_hist)
+plt.show()
+
+color_hist = cv2.calcHist([Color_image],[0],None,[2600],[0,2600])
+plt.figure() 
+plt.imshow(color_image)
+plt.show()
+plt.title("Histogram")
+plt.xlabel("Grayscale Value")
+plt.ylabel("Pixel Count")
+plt.stem(color_hist)
 plt.show()
 
 
@@ -34,14 +50,21 @@ plt.show()
 # In[3]:Write the code to perform histogram equalization of the image. 
 
 
+gray_image = cv2.imread("img-1.jpg")
+grey=cv2.cvtColor(gray_image,cv2.COLOR_BGR2GRAY)
+plt.imshow(grey)
+plt.show()
+equ = cv2.equalizeHist(grey)
+plt.imshow(equ)
+plt.show()
 
-import cv2
-import matplotlib.pyplot as plt 
-gi=cv2.imread("gray image of flower.jpg",0)
-colorscale=cv2.imread("color image of flower.jpg")
-g=cv2.resize(gi,(500,400))
-equ=cv2.equalizeHist(gi)
-
+color_image=cv2.imread('img-2.jpg')
+grey=cv2.cvtColor(color_image,cv2.COLOR_BGR2GRAY)
+plt.imshow(color_image)
+plt.show()
+eq = cv2.equalizeHist(grey)
+plt.imshow(eq)
+plt.show()
 
 
 
